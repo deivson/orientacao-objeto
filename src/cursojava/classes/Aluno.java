@@ -166,7 +166,7 @@ public class Aluno {
 
     public boolean getAlunoAprovado() {
         double media = this.getMediaNota();
-        if (media >=70){
+        if (media >= 70){
             return true;
         }else{
             return false;
