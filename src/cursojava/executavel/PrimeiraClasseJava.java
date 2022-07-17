@@ -26,7 +26,7 @@ public class PrimeiraClasseJava {
         String nota3 = JOptionPane.showInputDialog("Nota 3");
         String nota4 = JOptionPane.showInputDialog("Nota 4");
 
-        Aluno aluno1 = new Aluno(); /*Aqui será o João*/
+        Aluno aluno1 = new Aluno();
 
         aluno1.setNome(nome);
         aluno1.setIdade(Integer.parseInt(idade));
@@ -43,15 +43,10 @@ public class PrimeiraClasseJava {
         aluno1.setNota3(Double.parseDouble(nota3));
         aluno1.setNota4(Double.parseDouble(nota4));
 
-        System.out.println("Nome do(a) aluno(a) 1 eh " + aluno1.getNome());
-        System.out.println("Idade eh " + aluno1.getIdade());
-        System.out.println("Nascimento = " + aluno1.getDataNascimento());
-        System.out.println("Resgistro eh = " + aluno1.getRegistroGeral());
-        System.out.println("Media da nota eh = " + aluno1.getMediaNota());
-        System.out.println("O(a) aluno(a) esta " + (aluno1.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
-        System.out.println("O(a) aluno(a) esta " + aluno1.getAlunoAprovado2());
 
-
+        System.out.println(aluno1.toString()); /*Descrição do objeto na memória*/
+        System.out.println("Média do aluno = " +aluno1.getMediaNota());
+        System.out.println("Resultado = " + aluno1.getAlunoAprovado2());
 
 
     }
