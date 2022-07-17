@@ -11,7 +11,7 @@ public class PrimeiraClasseJava {
         /* new Aluno() é uma instancia (Criação de objeto)*/
         /*aluno1 é uma referencia para o objeto aluno*/
 
-        String nome = JOptionPane.showInputDialog("Qual o nome do aluno");
+        /*String nome = JOptionPane.showInputDialog("Qual o nome do aluno");
         String idade = JOptionPane.showInputDialog("Qual a idade do Aluno");
         String dataNascimento = JOptionPane.showInputDialog("Data de nascimento");
         String rg = JOptionPane.showInputDialog("Registro Geral");
@@ -41,13 +41,28 @@ public class PrimeiraClasseJava {
         aluno1.setNota1(Double.parseDouble(nota1));
         aluno1.setNota2(Double.parseDouble(nota2));
         aluno1.setNota3(Double.parseDouble(nota3));
-        aluno1.setNota4(Double.parseDouble(nota4));
+        aluno1.setNota4(Double.parseDouble(nota4));*/
 
 
-        System.out.println(aluno1.toString()); /*Descrição do objeto na memória*/
-        System.out.println("Média do aluno = " +aluno1.getMediaNota());
-        System.out.println("Resultado = " + aluno1.getAlunoAprovado2());
+        /*System.out.println(aluno1.toString()); /*Descrição do objeto na memória*/
+        /*System.out.println("Média do aluno = " +aluno1.getMediaNota());
+        System.out.println("Resultado = " + aluno1.getAlunoAprovado2());*/
 
+        /*Equals e hashcode (Diferenciar e comparar objetos)*/
+
+        Aluno aluno1 = new Aluno();
+        aluno1.setNome("Deivson");
+        aluno1.setNumeroCpf("123");
+
+        Aluno aluno2 = new Aluno();
+        aluno2.setNome("Deivson");
+        aluno2.setNumeroCpf("1234");
+
+        if(aluno1.equals(aluno2)){
+            System.out.println("Alunos são iguais");
+        }else{
+            System.out.println("Aluno não são iguais");
+        }
 
     }
 }
