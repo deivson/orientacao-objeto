@@ -157,7 +157,9 @@ public class Aluno {
     public void setNota4(double nota4) {
         this.nota4 = nota4;
     }
-    /*Método que retorna a média do aluno*/
+
+    /*Português == Método que retorna a média do aluno*/
+    /*English == Method that returns the student's average */
     public double getMediaNota(){
         return (nota1 + nota2 + nota3 +nota4) / 4;
     }
