@@ -42,9 +42,6 @@ public class Aluno {
         this.nota3 = nota3;
         this.nota4 = nota4;
     }
-    /*Veremos o métodos SETTERS e GETTERS do objeto*/
-    /*SET é para adicionar ou receber dados para os atributos*/
-    /*GET é para resgatar ou obter o valor do atributo*/
 
     public String getNome() {
         return nome;
