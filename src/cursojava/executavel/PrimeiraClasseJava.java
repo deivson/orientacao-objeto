@@ -1,6 +1,7 @@
 package cursojava.executavel;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Disciplina;
 
 import javax.swing.*;
 
@@ -22,17 +23,6 @@ public class PrimeiraClasseJava {
         String serie = JOptionPane.showInputDialog("Qual a série");
         String escola = JOptionPane.showInputDialog("Nome da escola");
 
-        String disciplina1 = JOptionPane.showInputDialog("Disciplina 1");
-        String nota1 = JOptionPane.showInputDialog("Nota 1");
-
-        String disciplina2 = JOptionPane.showInputDialog("Disciplina 2");
-        String nota2 = JOptionPane.showInputDialog("Nota 2");
-
-        String disciplina3 = JOptionPane.showInputDialog("Disciplina 3");
-        String nota3 = JOptionPane.showInputDialog("Nota 3");
-
-        String disciplina4 = JOptionPane.showInputDialog("Disciplina 4");
-        String nota4 = JOptionPane.showInputDialog("Nota 4");
 
         Aluno aluno1 = new Aluno();
 
@@ -47,35 +37,23 @@ public class PrimeiraClasseJava {
         aluno1.setNomeEscola(escola);
         aluno1.setSerieMatriculado(serie);
 
-        aluno1.getDisciplina().setNota1(Double.parseDouble(nota1));
-        aluno1.getDisciplina().setNota2(Double.parseDouble(nota2));
-        aluno1.getDisciplina().setNota3(Double.parseDouble(nota3));
-        aluno1.getDisciplina().setNota4(Double.parseDouble(nota4));
+        for (int pos = 1; pos <= 4; pos++) {
+            String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos + " ? ");
+            String notaDisciplina = JOptionPane.showInputDialog("Nota da disciplina " + pos + "  ?");
 
-        aluno1.getDisciplina().setDisciplina1(disciplina1);
-        aluno1.getDisciplina().setDisciplina2(disciplina2);
-        aluno1.getDisciplina().setDisciplina3(disciplina3);
-        aluno1.getDisciplina().setDisciplina4(disciplina4);
+            Disciplina disciplina = new Disciplina();
+            disciplina.setDisciplina(nomeDisciplina);
+            disciplina.setNota(Double.valueOf(notaDisciplina));
+
+            aluno1.getDisciplinas().add(disciplina);
+
+        }
+
 
         System.out.println(aluno1.toString());
-        System.out.println("Média do aluno = " +aluno1.getMediaNota());
+        System.out.println("Média do aluno = " + aluno1.getMediaNota());
         System.out.println("Resultado = " + aluno1.getAlunoAprovado2());
 
-        /*Equals e hashcode (Diferenciar e comparar objetos)*/
-
-
-        /*aluno1.setNome("Deivson");
-        aluno1.setNumeroCpf("123");
-
-        Aluno aluno2 = new Aluno();
-        aluno2.setNome("Deivson");
-        aluno2.setNumeroCpf("1234");
-
-        if(aluno1.equals(aluno2)){
-            System.out.println("Alunos são iguais");
-        }else{
-            System.out.println("Aluno não são iguais");
-        }*/
 
     }
 }

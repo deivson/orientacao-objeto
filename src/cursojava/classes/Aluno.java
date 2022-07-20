@@ -1,10 +1,11 @@
 package cursojava.classes;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /*Está é nossa classe/objeto que representa o Aluno*/
 public class Aluno {
-
 
     private String nome;
     private int idade;
@@ -17,17 +18,17 @@ public class Aluno {
     private String nomeEscola;
     private String serieMatriculado;
 
-    private Disciplina disciplina = new Disciplina();
+    private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
     }
 
-    public Aluno(){
+    public Aluno() {
 
     }
 
@@ -43,9 +44,6 @@ public class Aluno {
         this.nomeEscola = nomeEscola;
         this.serieMatriculado = serieMatriculado;
     }
-
-
-
 
 
     public String getNome() {
@@ -131,9 +129,15 @@ public class Aluno {
 
     /*Português == Método que retorna a média do aluno*/
     /*English == Method that returns the student's average */
-    public double getMediaNota(){
-        return (disciplina.getNota1() + disciplina.getNota2() +
-                disciplina.getNota3() + disciplina.getNota4()) / 4;
+    public double getMediaNota() {
+
+        double somaNotas = 0.0;
+
+        for (Disciplina disciplina : disciplinas) {
+            somaNotas += disciplina.getNota();
+        }
+
+        return somaNotas / disciplinas.size();
     }
 
     /*Português == esses dois métodos serve para saber se aluno está aprovado ou reprovado*/
@@ -141,17 +145,18 @@ public class Aluno {
 
     public boolean getAlunoAprovado() {
         double media = this.getMediaNota();
-        if (media >= 70){
+        if (media >= 70) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public String getAlunoAprovado2(){
+
+    public String getAlunoAprovado2() {
         double media = this.getMediaNota();
-        if (media >= 70){
+        if (media >= 70) {
             return "Aluno está aprovado";
-        }else{
+        } else {
             return "Aluno está Reprovado";
         }
     }
@@ -169,7 +174,7 @@ public class Aluno {
                 ", dataMatricula='" + dataMatricula + '\'' +
                 ", nomeEscola='" + nomeEscola + '\'' +
                 ", serieMatriculado='" + serieMatriculado + '\'' +
-                ", disciplina=" + disciplina +
+                ", disciplinas=" + disciplinas +
                 '}';
     }
 
