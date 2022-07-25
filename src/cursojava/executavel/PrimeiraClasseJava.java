@@ -13,7 +13,7 @@ public class PrimeiraClasseJava {
 
         List<Aluno> alunos = new ArrayList<Aluno>();
 
-        for (int qtd = 1; qtd <= 2; qtd++) {
+        for (int qtd = 1; qtd <= 1; qtd++) {
 
 
 
@@ -78,20 +78,22 @@ public class PrimeiraClasseJava {
 
         }
 
-        for (Aluno aluno : alunos) {
+        for (int pos = 0; pos < alunos.size(); pos++) {
 
-            if (aluno.getNome().equalsIgnoreCase("Deivson")) {
-                alunos.remove(aluno);
-                break;
-            } else {
-                System.out.println(aluno.toString());
-                System.out.println("Média do aluno = " + aluno.getMediaNota());
-                System.out.println("Resultado = " + aluno.getAlunoAprovado2());
-                System.out.println("----------------------------------------------------------------------------");
+            Aluno aluno = alunos.get(pos);
+
+            System.out.println("Aluno = " + aluno.getNome());
+            System.out.println("Média do aluno = " + aluno.getMediaNota());
+            System.out.println("Resultado = " + aluno.getAlunoAprovado2());
+            System.out.println("---------------------------------------------------------------------");
+
+            for (int posd = 0; posd < aluno.getDisciplinas().size(); posd++) {
+
+                Disciplina disc = aluno.getDisciplinas().get(posd);
+                System.out.println("Matéria = " + disc.getDisciplina() + " Nota = " + disc.getNota());
             }
 
         }
-
 
     }
 }
