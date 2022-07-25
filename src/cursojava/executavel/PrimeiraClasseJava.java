@@ -20,7 +20,7 @@ public class PrimeiraClasseJava {
             /* new Aluno() é uma instância (Criação de objeto)*/
             /*aluno1 é uma referência para o objeto aluno*/
 
-            String nome = JOptionPane.showInputDialog("Qual o nome do aluno" + qtd + " ?");
+            String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + " ?");
         /*String idade = JOptionPane.showInputDialog("Qual a idade do Aluno");
         String dataNascimento = JOptionPane.showInputDialog("Data de nascimento");
         String rg = JOptionPane.showInputDialog("Registro Geral");
@@ -80,10 +80,15 @@ public class PrimeiraClasseJava {
 
         for (Aluno aluno : alunos) {
 
-            System.out.println(aluno.toString());
-            System.out.println("Média do aluno = " + aluno.getMediaNota());
-            System.out.println("Resultado = " + aluno.getAlunoAprovado2());
-            System.out.println("----------------------------------------------------------------------------");
+            if (aluno.getNome().equalsIgnoreCase("Deivson")) {
+                alunos.remove(aluno);
+                break;
+            } else {
+                System.out.println(aluno.toString());
+                System.out.println("Média do aluno = " + aluno.getMediaNota());
+                System.out.println("Resultado = " + aluno.getAlunoAprovado2());
+                System.out.println("----------------------------------------------------------------------------");
+            }
 
         }
 
