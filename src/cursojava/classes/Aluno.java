@@ -23,9 +23,6 @@ public class Aluno extends Pessoa {
         return disciplinas;
     }
 
-    public Aluno() {
-
-    }
 
     public Aluno(String nome, int idade, String dataNascimento, String registroGeral, String numeroCpf, String nomeMae, String nomePai, String dataMatricula, String nomeEscola, String serieMatriculado) {
         this.nome = nome;
@@ -40,6 +37,15 @@ public class Aluno extends Pessoa {
         this.serieMatriculado = serieMatriculado;
     }
 
+    public Aluno() {
+
+    }
+
+
+    @Override
+    public double salario() {
+        return 1500.90;
+    }
 
     public String getNome() {
         return nome;
@@ -179,5 +185,13 @@ public class Aluno extends Pessoa {
                 '}';
     }
 
+    @Override
+    public boolean pessoaMaiorIdade() {
+        return idade >= 21;
+    }
+
+    public String msgMaiorIdade() {
+        return this.pessoaMaiorIdade() ? "Obaa aluno é maior idade " : "Ixii vc é menor de idade";
+    }
 }
 
