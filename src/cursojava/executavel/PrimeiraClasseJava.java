@@ -2,7 +2,9 @@ package cursojava.executavel;
 
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
+import cursojava.classes.Secretario;
 import cursojava.constantes.StatusAluno;
+import cursojava.interfaces.PermitirAcesso;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -16,8 +18,10 @@ public class PrimeiraClasseJava {
         String login = JOptionPane.showInputDialog("Informe o login ");
         String senha = JOptionPane.showInputDialog("Informe a senha ");
 
-        if (login.equalsIgnoreCase("admin") &&
-                senha.equalsIgnoreCase("admin")) {
+        PermitirAcesso permitirAcesso = new Secretario(login, senha);
+
+
+        if (permitirAcesso.autenticar()) { /*se TRUE acessa se FALSE não acessa*/
 
 
             List<Aluno> alunos = new ArrayList<Aluno>();
@@ -124,6 +128,8 @@ public class PrimeiraClasseJava {
                 System.out.println("Nome do aluno = " + aluno.getNome() + " Resultado  = " + aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
 
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Acesso não permitido");
         }
 
     }
