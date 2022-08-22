@@ -1,8 +1,10 @@
 package cursojava.executavel;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
 import cursojava.classes.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
 import cursojava.interfaces.PermitirAcesso;
 
@@ -18,14 +20,10 @@ public class PrimeiraClasseJava {
         String login = JOptionPane.showInputDialog("Informe o login ");
         String senha = JOptionPane.showInputDialog("Informe a senha ");
 
-        PermitirAcesso permitirAcesso = new Secretario(login, senha);
 
-
-        if (permitirAcesso.autenticar()) { /*se TRUE acessa se FALSE não acessa*/
-
+        if (new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) { /*Vou travar o contrato para autorizar somente quem realmente tem o contrato 100% legitimo */
 
             List<Aluno> alunos = new ArrayList<Aluno>();
-
 
             /*É uma lista que dentro dela temos uma chave que identifica uma sequência de valores também*/
             HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
@@ -129,7 +127,7 @@ public class PrimeiraClasseJava {
 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Acesso não permitido");
+            JOptionPane.showMessageDialog(null, "Acesso não permito");
         }
 
     }
