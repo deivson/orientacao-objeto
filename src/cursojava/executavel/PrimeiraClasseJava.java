@@ -136,8 +136,23 @@ public class PrimeiraClasseJava {
 
 
         } catch (Exception e) {
+
+            StringBuffer saida = new StringBuffer();
+
             e.printStackTrace();/*Imprime erro no console Java*/
-            JOptionPane.showMessageDialog(null, "Erro ao processar as notas");
+
+            /*Mensagem do erro ou causa*/
+            System.out.println(" Mensagem: " + e.getMessage());
+
+            for (int pos = 0; pos < e.getStackTrace().length; pos++) {
+
+                saida.append("\n Classe de erro : " + e.getStackTrace()[pos].getClassName());
+                saida.append("\n Método de erro : " + e.getStackTrace()[pos].getMethodName());
+                saida.append("\n Linha de erro : " + e.getStackTrace()[pos].getLineNumber());
+                saida.append("\n Class  : " + e.getClass().getName());
+            }
+
+            JOptionPane.showMessageDialog(null, "Erro ao processar as notas" + saida.toString());
         }
     }
 
