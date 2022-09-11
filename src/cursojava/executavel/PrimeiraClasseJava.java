@@ -6,12 +6,16 @@ import cursojava.classes.Disciplina;
 import cursojava.classes.Secretario;
 import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
+import cursojava.excecao.ExcecaoProcessarNota;
 import cursojava.interfaces.PermitirAcesso;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class PrimeiraClasseJava {
 
@@ -19,6 +23,7 @@ public class PrimeiraClasseJava {
 
 
         try {
+            lerArquivo();
 
             String login = JOptionPane.showInputDialog("Informe o login ");
             String senha = JOptionPane.showInputDialog("Informe a senha ");
@@ -32,13 +37,14 @@ public class PrimeiraClasseJava {
                 HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 
 
-                for (int qtd = 1; qtd <= 2; qtd++) {
+                for (int qtd = 1; qtd <= 1; qtd++) {
 
                     /* new Aluno() é uma instância (Criação de objeto)*/
                     /*aluno1 é uma referência para o objeto aluno*/
 
                     String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + " ?");
-                    /*String idade = JOptionPane.showInputDialog("Qual a idade do Aluno");
+                    String idade = JOptionPane.showInputDialog("Qual a idade do Aluno");
+        /*
         String dataNascimento = JOptionPane.showInputDialog("Data de nascimento");
         String rg = JOptionPane.showInputDialog("Registro Geral");
         String cpf = JOptionPane.showInputDialog("Qual é CPF");
@@ -52,15 +58,16 @@ public class PrimeiraClasseJava {
                     Aluno aluno1 = new Aluno();
 
                     aluno1.setNome(nome);
-                    /*aluno1.setIdade(Integer.parseInt(idade));
-        aluno1.setDataNascimento(dataNascimento);
-        aluno1.setRegistroGeral(rg);
-        aluno1.setNumeroCpf(cpf);
-        aluno1.setNomeMae(mae);
-        aluno1.setNomePai(pai);
-        aluno1.setDataMatricula(matricula);
-        aluno1.setNomeEscola(escola);
-        aluno1.setSerieMatriculado(serie);*/
+                    aluno1.setIdade(Integer.valueOf(idade));
+                    /*
+                    aluno1.setDataNascimento(dataNascimento);
+                    aluno1.setRegistroGeral(rg);
+                    aluno1.setNumeroCpf(cpf);
+                    aluno1.setNomeMae(mae);
+                    aluno1.setNomePai(pai);
+                    aluno1.setDataMatricula(matricula);
+                    aluno1.setNomeEscola(escola);
+                    aluno1.setSerieMatriculado(serie);*/
 
                     for (int pos = 1; pos <= 1; pos++) {
                         String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos + " ? ");
@@ -135,7 +142,7 @@ public class PrimeiraClasseJava {
             }
 
 
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
 
             StringBuffer saida = new StringBuffer();
 
@@ -152,10 +159,28 @@ public class PrimeiraClasseJava {
                 saida.append("\n Class  : " + e.getClass().getName());
             }
 
-            JOptionPane.showMessageDialog(null, "Erro ao processar as notas" + saida.toString());
+            JOptionPane.showMessageDialog(null, "Erro convenção de número " + saida.toString());
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Opaa um null pointer excepion : " + e.getClass());
+
+        } catch (ExcecaoProcessarNota e) { /*Capturar todas a exceções que não prevemos*/
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro da execeção customizada : " + e.getClass().getName());
+        } finally { /*Sempre é executado ocorrendo erros ou não*/
+            /*Finally sempre quando se precisa executar um processo acontecendo erro ou não no sistema*/
+            JOptionPane.showMessageDialog(null, "Obrigado por aprender Java comigo");
         }
+
     }
 
+    public static void lerArquivo() throws ExcecaoProcessarNota {
+        try {
+            File fil = new File("c://lines.txt");
+            Scanner scanner = new Scanner(fil);
+        } catch (FileNotFoundException e) {
+            throw new ExcecaoProcessarNota(e.getMessage());
+        }
+    }
 
 }
 
