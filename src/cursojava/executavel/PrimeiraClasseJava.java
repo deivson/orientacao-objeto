@@ -142,7 +142,7 @@ public class PrimeiraClasseJava {
             }
 
 
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
 
             StringBuffer saida = new StringBuffer();
 
@@ -160,11 +160,7 @@ public class PrimeiraClasseJava {
             }
 
             JOptionPane.showMessageDialog(null, "Erro convenção de número " + saida.toString());
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Opaa um null pointer excepion : " + e.getClass());
 
-        } catch (ExcecaoProcessarNota e) { /*Capturar todas a exceções que não prevemos*/
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro da execeção customizada : " + e.getClass().getName());
         } finally { /*Sempre é executado ocorrendo erros ou não*/
             /*Finally sempre quando se precisa executar um processo acontecendo erro ou não no sistema*/
@@ -173,13 +169,10 @@ public class PrimeiraClasseJava {
 
     }
 
-    public static void lerArquivo() throws ExcecaoProcessarNota {
-        try {
-            File fil = new File("c://lines.txt");
-            Scanner scanner = new Scanner(fil);
-        } catch (FileNotFoundException e) {
-            throw new ExcecaoProcessarNota(e.getMessage());
-        }
+    public static void lerArquivo() throws FileNotFoundException {
+        File fil = new File("c://lines.txt");
+        Scanner scanner = new Scanner(fil);
+
     }
 
 }
